@@ -179,5 +179,48 @@ describe('The taxi queue app', function() {
 		assert.equal(0, taxiQueue.taxiQueueLength());
 		assert.equal(15, taxiQueue.queueLength());
 	});
+	//unit tests for local storage
+	it ('should be able to add passenger count to local storage', function() {
+         const taxiQueue = TaxiQueue();
+
+		 taxiQueue.joinQueue();
+		 taxiQueue.joinQueue();
+		 taxiQueue.joinQueue();
+		 taxiQueue.joinQueue();
+        
+		localStorage.setItem('passengerCount', taxiQueue.queueLength());
+
+		 assert.equal(4, localStorage.getItem('passengerCount'));
+	});
+	it('should be able to add taxi count to local storage', function() {
+		const taxiQueue = TaxiQueue();
+
+		taxiQueue.joinTaxiQueue();
+		taxiQueue.joinTaxiQueue();
+		taxiQueue.joinTaxiQueue();
+
+		localStorage.setItem('taxiCount', taxiQueue.taxiQueueLength());
+
+		assert.equal(3, localStorage.getItem('taxiCount'));
+	}
+	);
+	it("should be able to remove passenger count from local storage", function() {
+		const taxiQueue = TaxiQueue();
+
+		taxiQueue.joinQueue();
+		taxiQueue.joinQueue();
+		taxiQueue.joinQueue();
+		taxiQueue.joinQueue();
+		taxiQueue.leaveQueue();
+
+		localStorage.setItem('passengerCount', taxiQueue.queueLength());
+
+		assert.equal(3, localStorage.getItem('passengerCount'));
+
+		// localStorage.removeItem('passengerCount');
+
+		// assert.equal(null, localStorage.getItem('passengerCount'));
+	}
+	);
 });
 

@@ -1,15 +1,12 @@
-function TaxiQueue() {
+function TaxiQueue(passenger,taxi) {
 	var passengerQueue = [];
 	var taxiQueue = [];
-	var passengerCount = 0;
-	var taxiCount = 0;
-	// var taxiLeave = 0;
-	// var taxiJoin = 0;
+	var passengerCount = passenger || 0;
+	var taxiCount = taxi || 0;
 
 	function joinQueue() {
 		passengerCount++;
 		passengerQueue.push(passengerCount);
-		// passengerCount.innerHTML = passengerQueue.length;
 	}
 
 	function leaveQueue() {
@@ -37,12 +34,18 @@ function TaxiQueue() {
 		}
 	}
 
+	function localStorage() {
+		localStorage.setItem('passengerCount', passengerCount);
+		localStorage.setItem('taxiCount', taxiCount);
+	}
+
 	return {
 		joinQueue,
 		leaveQueue,
 		joinTaxiQueue,
 		queueLength,
 		taxiQueueLength,
-		taxiDepart
+		taxiDepart,
+		localStorage
 	}
 }
