@@ -48,12 +48,7 @@ taxiDepart.addEventListener('click', function() {
     localStorage.setItem('passengerCount', passengerCount.innerHTML);
 }
 );
+    passengerCount.innerHTML = localStorage.getItem('passengerCount');
+    taxiCount.innerHTML = localStorage.getItem('taxiCount');
 
-// //when I refresh  the page the passenger count should be the same as the local storage
-// //when I refresh  the page the taxi count should be the same as the local storage
-
-// function refresh() {
-//     passengerCount.innerHTML = localStorage.getItem('passengerCount');
-//     taxiCount.innerHTML = localStorage.getItem('taxiCount');
-// }
 
